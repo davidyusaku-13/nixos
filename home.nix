@@ -22,7 +22,7 @@
       fi
     '';
     initContent = ''
-      afetch
+      fastfetch
     '';
   };
 

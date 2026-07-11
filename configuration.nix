@@ -63,7 +63,7 @@
     fd
     brightnessctl
     waypaper
-    afetch
+    fastfetch
   ];
 
   fonts.packages = with pkgs; [
