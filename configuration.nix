@@ -62,6 +62,7 @@
     ripgrep
     fd
     brightnessctl
+    waypaper
     afetch
   ];
 
