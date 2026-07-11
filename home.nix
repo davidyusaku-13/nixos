@@ -21,7 +21,7 @@
         exec start-hyprland
       fi
     '';
-    initcontent = ''
+    initContent = ''
       afetch
     '';
   };
