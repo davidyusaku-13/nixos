@@ -46,7 +46,7 @@
     waybar
     kitty
     wofi
-    dolphin
+    kdePackages.dolphin
     hyprpaper
     grim
     slurp
