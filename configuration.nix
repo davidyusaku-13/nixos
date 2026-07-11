@@ -67,6 +67,11 @@
     astro-language-server
     waypaper
     swayosd
+    go
+    nodejs
+    bun
+    uv
+    sublime4
     fastfetch
   ];
 
