@@ -30,6 +30,7 @@
     enable = true;
     settings.PasswordAuthentication = true;
   };
+  nixpkgs.config.allowUnfree = true;
 
   programs.hyprland = {
     enable = true;
