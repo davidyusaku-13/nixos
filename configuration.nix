@@ -45,6 +45,8 @@
     foot
     waybar
     kitty
+    wofi
+    dolphin
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
