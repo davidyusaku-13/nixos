@@ -26,7 +26,7 @@
   home.file = builtins.listToAttrs (map (app: {
     name = ".config/${app}";
     value = { source = ./. + "/config/${app}"; force = true; };
-  }) [ "hypr" "waybar" "foot" "nvim" "wofi" ]);
+  }) [ "hypr" "waybar" "alacritty" "nvim" "wofi" ]);
 
   home.packages = with pkgs; [
     (pkgs.writeShellApplication {

@@ -2,5 +2,5 @@ show=drun
 width=600
 height=400
 allow_images=true
-term=foot
+term=alacritty
 prompt=Search Apps...

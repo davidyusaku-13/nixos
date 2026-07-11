@@ -42,7 +42,7 @@
   environment.systemPackages = with pkgs; [
     neovim
     wget
-    foot
+    alacritty
     waybar
     kitty
     wofi
