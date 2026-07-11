@@ -266,6 +266,20 @@ vim.lsp.config['templ'] = {
     capabilities = caps,
 }
 
+vim.lsp.config['svelte'] = {
+    cmd = { 'svelteserver', '--stdio' },
+    filetypes = { 'svelte' },
+    root_markers = { 'package.json', '.git' },
+    capabilities = caps,
+}
+
+vim.lsp.config['astro'] = {
+    cmd = { 'astro-ls', '--stdio' },
+    filetypes = { 'astro' },
+    root_markers = { 'package.json', 'astro.config.mjs', '.git' },
+    capabilities = caps,
+}
+
 vim.filetype.add({
     extension = {
         h = 'c',
