@@ -35,6 +35,10 @@
     source = ./config/foot;
     force = true;
   };
+  home.file.".config/nvim" = {
+    source = ./config/nvim;
+    force = true;
+  };
 
   home.packages = with pkgs; [
     (pkgs.writeShellApplication {
