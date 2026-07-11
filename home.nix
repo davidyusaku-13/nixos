@@ -26,18 +26,6 @@
     '';
   };
 
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Tokyonight-Dark";
-      package = pkgs.tokyonight-gtk-theme;
-    };
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk";
-  };
 
   home.file = builtins.listToAttrs (map (app: {
     name = ".config/${app}";
