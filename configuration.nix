@@ -9,7 +9,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  services.getty.autologinUser = "tony";
+  services.getty.autologinUser = "david";
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -22,7 +22,7 @@
     xwayland.enable = true;
   };
 
-  users.users.tony = {
+  users.users.david = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
