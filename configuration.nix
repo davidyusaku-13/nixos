@@ -8,6 +8,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  hardware.graphics.enable = true;
 
   services.getty.autologinUser = "david";
 
@@ -18,12 +19,13 @@
 
   programs.hyprland = {
     enable = true;
+    withUWSM = true;
     xwayland.enable = true;
   };
 
   users.users.david = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "video" "input" "networkmanager" ];
     packages = with pkgs; [
       tree
     ];
