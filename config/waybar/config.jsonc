@@ -8,7 +8,7 @@
     "modules-left": [
         "ext/workspaces",
         "custom/sep",
-        "ext/window",
+        "hyprland/window",
         "custom/sep"
     ],
     "modules-center": [],
@@ -38,7 +38,7 @@
             "*": 9
         }
     },
-    "ext/window": {
+    "hyprland/window": {
         "max-length": 40,
         "seperate-outputs": false
     },

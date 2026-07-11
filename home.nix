@@ -21,6 +21,9 @@
         exec start-hyprland
       fi
     '';
+    initExtra = ''
+      afetch
+    '';
   };
 
   home.file = builtins.listToAttrs (map (app: {
