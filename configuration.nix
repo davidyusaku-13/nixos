@@ -32,12 +32,6 @@
   };
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [
-      "openssl-1.1.1w"
-    ];
-    problems.handlers = {
-      sublimetext4.broken = "warn";
-    };
   };
 
   programs.hyprland = {
@@ -73,14 +67,12 @@
     brightnessctl
     gopls
     svelte-language-server
-    astro-language-server
     waypaper
     swayosd
     go
     nodejs
     bun
     uv
-    sublime4
     fastfetch
   ];
 
