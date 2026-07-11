@@ -8,6 +8,7 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    autosuggestion.enable = true;
     shellAliases = {
       btw = "echo i use nixos, btw";
       rb = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixos-btw";
