@@ -47,6 +47,10 @@
     kitty
     wofi
     dolphin
+    hyprpaper
+    grim
+    slurp
+    wl-clipboard
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
