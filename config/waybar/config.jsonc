@@ -1,10 +1,9 @@
 //-*- mode: jsonc -*-
 {
-    "layer": "top", 
-    "position": "top", 
-    "height": 30, 
-    "spacing": 4, 
-
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
     // Choose the order of the modules
     "modules-left": [
         "ext/workspaces",
@@ -12,9 +11,7 @@
         "ext/window",
         "custom/sep"
     ],
-    "modules-center": [
-    ],
-
+    "modules-center": [],
     "modules-right": [
         "custom/sep",
         "network",
@@ -25,11 +22,12 @@
         "custom/sep",
         "disk",
         "custom/sep",
+        "battery",
+        "custom/sep",
         "clock",
         "custom/sep",
         "tray"
     ],
-
     // Modules configuration
     "ext/workspaces": {
         "disable-scroll": true,
@@ -37,10 +35,10 @@
         "warp-on-scroll": false,
         "format": "{name}",
         "persistent-workspaces": {
-            "*" : 9
+            "*": 9
         }
     },
-    "ext/window" : {
+    "ext/window": {
         "max-length": 40,
         "seperate-outputs": false
     },
@@ -77,14 +75,20 @@
         "format-plugged": "{capacity}% ",
         "format-alt": "Bat {capacity}%",
         "format-time": "{H}:{M}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "network": {
         "format": "Online",
         "format-disconnected": "Disconnected ⚠"
     },
     "custom/sep": {
-        "format" : "|",
-        "interval" : 0
+        "format": "|",
+        "interval": 0
     }
 }

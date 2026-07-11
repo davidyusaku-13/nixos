@@ -51,6 +51,7 @@
     grim
     slurp
     wl-clipboard
+    afetch
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
