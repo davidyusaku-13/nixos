@@ -23,22 +23,10 @@
     '';
   };
 
-  home.file.".config/hypr" = {
-    source = ./config/hypr;
-    force = true;
-  };
-  home.file.".config/waybar" = {
-    source = ./config/waybar;
-    force = true;
-  };
-  home.file.".config/foot" = {
-    source = ./config/foot;
-    force = true;
-  };
-  home.file.".config/nvim" = {
-    source = ./config/nvim;
-    force = true;
-  };
+  home.file = builtins.listToAttrs (map (app: {
+    name = ".config/${app}";
+    value = { source = ./. + "/config/${app}"; force = true; };
+  }) [ "hypr" "waybar" "foot" "nvim" ]);
 
   home.packages = with pkgs; [
     (pkgs.writeShellApplication {
