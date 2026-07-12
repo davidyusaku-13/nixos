@@ -6,52 +6,19 @@ This repository contains a unified NixOS configuration using Flakes and Home Man
 
 ## 1. Bare Metal Installation (From Live USB)
 
-If you are starting from a completely blank drive using the NixOS minimal ISO, follow these steps to deploy this repository directly during installation:
+If you are starting from a completely blank drive using the NixOS minimal ISO, you can use the automated install script to partition the drive, generate the hardware configuration, and install the flake in one go.
 
-### 1. Partition and Mount
-
-Identify your drive (`lsblk`) and partition it (e.g., using `cfdisk /dev/vda`).
-Create a 1GB EFI Boot partition and a Linux Filesystem partition for the remainder.
-
-Format and mount the partitions:
+Run the following commands:
 
 ```bash
-mkfs.ext4 -L nixos /dev/vda2
-mkfs.fat -F 32 -n BOOT /dev/vda1
-mount /dev/vda2 /mnt
-mount --mkdir /dev/vda1 /mnt/boot
+curl -O https://raw.githubusercontent.com/davidyusaku-13/nixos-dotfiles/main/install.sh
+chmod +x install.sh
+sudo ./install.sh
 ```
 
-### 2. Generate Hardware Config
+_The script will prompt you to select the target drive, and at the end it will ask you to set the passwords for `root` and your user `david`._
 
-Scan the hardware of the new machine:
-
-```bash
-nixos-generate-config --root /mnt
-```
-
-### 3. Clone and Track
-
-Clone this repository to a temporary location on the mounted drive, copy the generated hardware configuration into the host folder, and **add it to git** (Nix flakes ignore untracked files):
-
-```bash
-git clone https://github.com/davidyusaku-13/nixos-dotfiles.git /mnt/etc/nixos-dotfiles
-cp /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos-dotfiles/hosts/nixos-btw/
-cd /mnt/etc/nixos-dotfiles
-git add hosts/nixos-btw/hardware-configuration.nix
-```
-
-### 4. Install
-
-Run the flake installation:
-
-```bash
-nixos-install --flake /mnt/etc/nixos-dotfiles#nixos-btw
-```
-
-_You will be prompted to set the root password._
-
-### 5. Reboot and Cleanup
+### 2. Reboot and Cleanup
 
 Type `reboot`. Once you log in to your new desktop, move the repository to your home folder and take ownership so your aliases work:
 
