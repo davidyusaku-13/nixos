@@ -45,6 +45,12 @@ fi
 read -p "Enter the primary username [david]: " TARGET_USER
 TARGET_USER=${TARGET_USER:-david}
 
+read -p "Enter your Full Name for Git [David Yusaku]: " GIT_NAME
+GIT_NAME=${GIT_NAME:-David Yusaku}
+
+read -p "Enter your Email for Git [davidyusaku13@gmail.com]: " GIT_EMAIL
+GIT_EMAIL=${GIT_EMAIL:-davidyusaku13@gmail.com}
+
 echo ""
 echo "--- Set Passwords ---"
 
@@ -111,6 +117,14 @@ if [ "$TARGET_USER" != "david" ]; then
   sed -i "s/users\.users\.david =/users\.users\.$TARGET_USER =/g" hosts/nixos-btw/configuration.nix
   sed -i "s/home\.username = \"david\"/home\.username = \"$TARGET_USER\"/g" hosts/nixos-btw/home.nix
   sed -i "s/homeDirectory = \"\/home\/david\"/homeDirectory = \"\/home\/$TARGET_USER\"/g" hosts/nixos-btw/home.nix
+fi
+
+if [ "$GIT_NAME" != "David Yusaku" ]; then
+  sed -i "s/userName = \"David Yusaku\"/userName = \"$GIT_NAME\"/g" hosts/nixos-btw/home.nix
+fi
+
+if [ "$GIT_EMAIL" != "davidyusaku13@gmail.com" ]; then
+  sed -i "s/userEmail = \"davidyusaku13@gmail.com\"/userEmail = \"$GIT_EMAIL\"/g" hosts/nixos-btw/home.nix
 fi
 
 echo "==> Installing NixOS..."
