@@ -66,4 +66,7 @@ echo "==> Installing NixOS..."
 # We pass --no-root-passwd so it prompts you interactively for the password at the end
 nixos-install --flake /mnt/etc/nixos-dotfiles#nixos-btw
 
+echo "==> Setting password for user 'david'..."
+nixos-enter --root /mnt -c 'passwd david'
+
 echo "==> Done! You can now type 'reboot'."
