@@ -1,4 +1,4 @@
-{ self, config, pkgs, ... }:
+{ self, config, pkgs, lib, ... }:
 
 {
   home.username = "david";
@@ -34,18 +34,20 @@
   };
 
 
-  programs.alacritty.enable = true;
-  programs.waybar.enable = true;
-  programs.neovim.enable = true;
-  programs.wofi.enable = true;
-
-  xdg.configFile = {
-    "hypr".source = self + "/config/hypr";
-    "waybar".source = self + "/config/waybar";
-    "alacritty".source = self + "/config/alacritty";
-    "nvim".source = self + "/config/nvim";
-    "wofi".source = self + "/config/wofi";
+  programs = {
+    alacritty.enable = true;
+    waybar.enable = true;
+    neovim.enable = true;
+    wofi.enable = true;
   };
+
+  xdg.configFile = lib.genAttrs [
+    "hypr"
+    "waybar"
+    "alacritty"
+    "nvim"
+    "wofi"
+  ] (app: { source = self + "/config/${app}"; });
 
   home.packages = with pkgs; [
     (pkgs.writeShellApplication {
