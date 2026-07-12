@@ -188,6 +188,13 @@ nixos-install --flake /mnt/etc/nixos-dotfiles#nixos-btw --no-root-passwd
 echo "==> Setting passwords..."
 nixos-enter --root /mnt -c "echo 'root:%s' | chpasswd"
 nixos-enter --root /mnt -c "echo '%s:%s' | chpasswd"
+
+echo "==> Cleaning up..."
+umount -R /mnt 2>/dev/null || true
+
+echo "==> Rebooting in 3 seconds..."
+sleep 3
+reboot
 `,
 		drive, drive, drive, drive, drive,
 		partBoot, partRoot, partRoot, partBoot,
