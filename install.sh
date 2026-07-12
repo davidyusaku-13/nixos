@@ -127,6 +127,8 @@ if [ "$GIT_EMAIL" != "gitconfig@mail.com" ]; then
   sed -i "s/userEmail = \"gitconfig@mail.com\"/userEmail = \"$GIT_EMAIL\"/g" hosts/nixos-btw/home.nix
 fi
 
+git add -A
+
 echo "==> Installing NixOS..."
 # Run install without prompting for root password
 nixos-install --flake /mnt/etc/nixos-dotfiles#nixos-btw --no-root-passwd
