@@ -83,6 +83,10 @@ else
   PART_ROOT="${DRIVE}2"
 fi
 
+echo "==> Cleaning up previous mounts (if any)..."
+umount -R /mnt 2>/dev/null || true
+swapoff -a 2>/dev/null || true
+
 echo "==> Partitioning $DRIVE..."
 # Wipe the partition table and create a new GPT one
 parted -s "$DRIVE" -- mklabel gpt
