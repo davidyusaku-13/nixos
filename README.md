@@ -74,3 +74,16 @@ The script will:
 3. Run `nixos-rebuild switch`.
 4. Automatically commit and push the `flake.lock` file if it changed.
 5. Run Nix garbage collection to clear old boot generations and free up disk space.
+
+## 4. Building the Installer (Development)
+
+The interactive installer (`nixos-installer`) is written in Go using `charmbracelet/huh` for a clean TUI experience. It is automatically compiled and distributed via GitHub Actions.
+
+If you modify the Go code inside the `installer/` directory and want to publish a new binary, simply create and push a version tag:
+
+```bash
+git tag v1.0.1
+git push origin v1.0.1
+```
+
+GitHub Actions will automatically compile the Linux executable and attach it to the Releases page.
