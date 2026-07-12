@@ -26,7 +26,7 @@
             useGlobalPkgs = true;
             extraSpecialArgs = { inherit self inputs; };
             useUserPackages = true;
-            users.david = import ./hosts/nixos-btw/home.nix;
+            users.nixosusername = import ./hosts/nixos-btw/home.nix;
             backupFileExtension = "backup";
           };
         }

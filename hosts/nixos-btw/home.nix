@@ -1,13 +1,13 @@
 { self, config, pkgs, lib, ... }:
 
 {
-  home.username = "david";
-  home.homeDirectory = "/home/david";
+  home.username = "nixosusername";
+  home.homeDirectory = "/home/nixosusername";
   home.stateVersion = "26.05";
   programs.git = {
     enable = true;
-    userName = "David Yusaku";
-    userEmail = "davidyusaku13@gmail.com";
+    userName = "gitconfig";
+    userEmail = "gitconfig@mail.com";
   };
   programs.zsh = {
     enable = true;

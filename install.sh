@@ -42,14 +42,14 @@ if [ "$CONFIRM" != "YES" ]; then
   exit 1
 fi
 
-read -p "Enter the primary username [david]: " TARGET_USER
-TARGET_USER=${TARGET_USER:-david}
+read -p "Enter the primary username [nixosusername]: " TARGET_USER
+TARGET_USER=${TARGET_USER:-nixosusername}
 
-read -p "Enter your Full Name for Git [David Yusaku]: " GIT_NAME
-GIT_NAME=${GIT_NAME:-David Yusaku}
+read -p "Enter your Full Name for Git [gitconfig]: " GIT_NAME
+GIT_NAME=${GIT_NAME:-gitconfig}
 
-read -p "Enter your Email for Git [davidyusaku13@gmail.com]: " GIT_EMAIL
-GIT_EMAIL=${GIT_EMAIL:-davidyusaku13@gmail.com}
+read -p "Enter your Email for Git [gitconfig@mail.com]: " GIT_EMAIL
+GIT_EMAIL=${GIT_EMAIL:-gitconfig@mail.com}
 
 echo ""
 echo "--- Set Passwords ---"
@@ -111,20 +111,20 @@ cp /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos-dotfiles/hosts/nixos
 cd /mnt/etc/nixos-dotfiles
 
 echo "==> Configuring username as '$TARGET_USER'..."
-if [ "$TARGET_USER" != "david" ]; then
-  sed -i "s/users\.david =/users\.$TARGET_USER =/g" flake.nix
-  sed -i "s/autologinUser = \"david\"/autologinUser = \"$TARGET_USER\"/g" hosts/nixos-btw/configuration.nix
-  sed -i "s/users\.users\.david =/users\.users\.$TARGET_USER =/g" hosts/nixos-btw/configuration.nix
-  sed -i "s/home\.username = \"david\"/home\.username = \"$TARGET_USER\"/g" hosts/nixos-btw/home.nix
-  sed -i "s/homeDirectory = \"\/home\/david\"/homeDirectory = \"\/home\/$TARGET_USER\"/g" hosts/nixos-btw/home.nix
+if [ "$TARGET_USER" != "nixosusername" ]; then
+  sed -i "s/users\.nixosusername =/users\.$TARGET_USER =/g" flake.nix
+  sed -i "s/autologinUser = \"nixosusername\"/autologinUser = \"$TARGET_USER\"/g" hosts/nixos-btw/configuration.nix
+  sed -i "s/users\.users\.nixosusername =/users\.users\.$TARGET_USER =/g" hosts/nixos-btw/configuration.nix
+  sed -i "s/home\.username = \"nixosusername\"/home\.username = \"$TARGET_USER\"/g" hosts/nixos-btw/home.nix
+  sed -i "s/homeDirectory = \"\/home\/nixosusername\"/homeDirectory = \"\/home\/$TARGET_USER\"/g" hosts/nixos-btw/home.nix
 fi
 
-if [ "$GIT_NAME" != "David Yusaku" ]; then
-  sed -i "s/userName = \"David Yusaku\"/userName = \"$GIT_NAME\"/g" hosts/nixos-btw/home.nix
+if [ "$GIT_NAME" != "gitconfig" ]; then
+  sed -i "s/userName = \"gitconfig\"/userName = \"$GIT_NAME\"/g" hosts/nixos-btw/home.nix
 fi
 
-if [ "$GIT_EMAIL" != "davidyusaku13@gmail.com" ]; then
-  sed -i "s/userEmail = \"davidyusaku13@gmail.com\"/userEmail = \"$GIT_EMAIL\"/g" hosts/nixos-btw/home.nix
+if [ "$GIT_EMAIL" != "gitconfig@mail.com" ]; then
+  sed -i "s/userEmail = \"gitconfig@mail.com\"/userEmail = \"$GIT_EMAIL\"/g" hosts/nixos-btw/home.nix
 fi
 
 echo "==> Installing NixOS..."

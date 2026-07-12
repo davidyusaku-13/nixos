@@ -11,7 +11,7 @@
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  services.getty.autologinUser = "david";
+  services.getty.autologinUser = "nixosusername";
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -31,7 +31,7 @@
 
 
   programs.zsh.enable = true;
-  users.users.david = {
+  users.users.nixosusername = {
     isNormalUser = true;
     extraGroups = [ "wheel" "video" "input" "networkmanager" ];
     shell = pkgs.zsh;
