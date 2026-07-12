@@ -18,14 +18,6 @@ sudo ./nixos-installer
 
 _The script will prompt you to select the target drive, configure your username/git settings, and securely set your passwords upfront before installing._
 
-### 2. Reboot and Cleanup
-
-Type `reboot`. Once you log in to your new desktop, move the repository to your home folder and take ownership so your aliases work:
-
-```bash
-sudo mv /etc/nixos-dotfiles ~/nixos-dotfiles
-sudo chown -R $USER:users ~/nixos-dotfiles
-```
 
 ## 2. Applying to an Existing NixOS System
 

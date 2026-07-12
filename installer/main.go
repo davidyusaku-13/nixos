@@ -189,6 +189,10 @@ echo "==> Setting passwords..."
 nixos-enter --root /mnt -c "echo 'root:%s' | chpasswd"
 nixos-enter --root /mnt -c "echo '%s:%s' | chpasswd"
 
+echo "==> Moving dotfiles to user home..."
+nixos-enter --root /mnt -c "mv /etc/nixos-dotfiles /home/%s/"
+nixos-enter --root /mnt -c "chown -R %s:users /home/%s/nixos-dotfiles"
+
 echo "==> Cleaning up..."
 umount -R /mnt 2>/dev/null || true
 
@@ -203,6 +207,7 @@ reboot
 		gitEmail, gitEmail,
 		rootPass,
 		targetUser, userPass,
+		targetUser, targetUser, targetUser,
 	)
 
 	cmd := exec.Command("bash", "-c", script)
