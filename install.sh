@@ -9,12 +9,29 @@ fi
 
 echo "Available drives:"
 lsblk -d -n -o NAME,SIZE,MODEL | grep -v loop
-
 echo ""
-read -p "Enter the drive to format (e.g. /dev/sda, /dev/vda, /dev/nvme0n1): " DRIVE
 
-if [ -z "$DRIVE" ] || [ ! -b "$DRIVE" ]; then
-  echo "Invalid drive: $DRIVE"
+echo "Select the drive to format:"
+# Create an array of raw drive names (e.g., sda, vda, nvme0n1)
+mapfile -t DRIVES < <(lsblk -d -n -o NAME | grep -v loop)
+
+if [ ${#DRIVES[@]} -eq 0 ]; then
+  echo "No drives found!"
+  exit 1
+fi
+
+PS3="Enter the number for the drive: "
+select DRIVE_NAME in "${DRIVES[@]}"; do
+  if [ -n "$DRIVE_NAME" ]; then
+    DRIVE="/dev/$DRIVE_NAME"
+    break
+  else
+    echo "Invalid selection. Please try again."
+  fi
+done
+
+if [ ! -b "$DRIVE" ]; then
+  echo "Invalid drive path resolved: $DRIVE"
   exit 1
 fi
 
